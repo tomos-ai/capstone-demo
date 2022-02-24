@@ -1,7 +1,7 @@
 # Notice
 This repository is derived from: https://github.com/imfing/keras-flask-deploy-webapp. Some modifications were made.
 
-The following instructions may not work, if I have some time in the future I'll revise them.
+The following instructions may not work, if I have some time in the future I'll review them.
 
 # Deploy Keras Model with Flask as Web App in 10 Minutes
 
@@ -11,36 +11,24 @@ The following instructions may not work, if I have some time in the future I'll 
 
 A pretty and customizable web app to deploy your DL model with ease
 
-<a href="https://www.buymeacoffee.com/fing" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
-
 ## Getting Started in 10 Minutes
 
 - Clone this repo
 - Install requirements
 - Run the script
-- Go to http://localhost:5000
-- Done! :tada:
+- Go to http://localhost
+- Done!
 
-:point_down: Screenshot:
+Screenshot:
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/5097752/71063354-8caa1d00-213a-11ea-86eb-879238887c1f.png" height="420px" alt="">
+  <img src="static/screenshot.png" height="420px" alt="">
 </p>
 
-## New Features :fire:
+## New Features
 
-**Note**: Since changes have been done, some things might not work.
-
-- Enhanced, mobile-friendly UI
 - Support image drag-and-drop
 - Use vanilla JavaScript, HTML and CSS. Remove jQuery and Bootstrap
-- Upgrade Docker base image to Python 3 (it's 2020)
-
-<p float="left">
-  <img src="https://user-images.githubusercontent.com/5097752/71065048-61c1c800-213e-11ea-92f1-274cbe4734ba.png" height="330px" alt="">
-  <img src="https://user-images.githubusercontent.com/5097752/71062921-aeef6b00-2139-11ea-8b23-6b9eb1e326ca.png" height="330px" alt="">
-</p>
-
 
 ------------------
 
@@ -52,17 +40,17 @@ With **[Docker](https://www.docker.com)**, you can quickly build and run the ent
 
 ```shell
 # 1. First, clone the repo
-$ git clone https://github.com/mtobeiyf/keras-flask-deploy-webapp.git
-$ cd keras-flask-deploy-webapp
+$ git clone https://github.com/tomos-ai/capstone-demo.git
+$ cd capstone-demo
 
 # 2. Build Docker image
-$ docker build -t keras_flask_app .
+$ docker build -t capstone-demo .
 
 # 3. Run!
-$ docker run -it --rm -p 5000:5000 keras_flask_app
+$ docker run -it --rm -p 80:80 capstone-demo
 ```
 
-Open http://localhost:5000 and wait till the webpage is loaded.
+Open http://localhost and wait till the webpage is loaded.
 
 ## Local Installation
 
@@ -70,8 +58,8 @@ It's easy to install and run it on your computer.
 
 ```shell
 # 1. First, clone the repo
-$ git clone https://github.com/mtobeiyf/keras-flask-deploy-webapp.git
-$ cd keras-flask-deploy-webapp
+$ git clone https://github.com/tomos-ai/capstone-demo.git
+$ cd capstone-demo
 
 # 2. Install Python packages
 $ pip install -r requirements.txt
@@ -80,11 +68,7 @@ $ pip install -r requirements.txt
 $ python app.py
 ```
 
-Open http://localhost:5000 and have fun. :smiley:
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/5097752/71064959-3c34be80-213e-11ea-8e13-91800ca2d345.gif" height="480px" alt="">
-</p>
+Open http://localhost and have fun.
 
 ------------------
 
@@ -102,14 +86,18 @@ Run the script and hide it in background with `tmux` or `screen`.
 $ python app.py
 ```
 
+**Note**: `gunicorn` not tested!
+
 You can also use gunicorn instead of gevent
 ```
-$ gunicorn -b 127.0.0.1:5000 app:app
+$ gunicorn -b 127.0.0.1 app:app
 ```
 
 More deployment options, check [here](https://flask.palletsprojects.com/en/1.1.x/deploying/wsgi-standalone/)
 
 ### Set up Nginx
+
+**Note**: not tested!
 
 To redirect the traffic to your local app.
 Configure your Nginx `.conf` file.
@@ -121,7 +109,7 @@ server {
   client_max_body_size 20M;
 
   location / {
-      proxy_pass http://127.0.0.1:5000;
+      proxy_pass http://127.0.0.1;
   }
 }
 ```
