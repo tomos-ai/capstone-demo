@@ -1,29 +1,29 @@
-# Notice
+**Notice**<br>
 This repository is derived from: https://github.com/imfing/keras-flask-deploy-webapp. Some modifications were made.
 
 The following instructions may not work, if I have some time in the future I'll review them.
 
-# Deploy Keras Model with Flask as Web App in 10 Minutes
-
+# FourthBrain capstone project demo
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 [![](https://img.shields.io/badge/python-3.5%2B-green.svg)]()
 ![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 
-A pretty and customizable web app to deploy your DL model with ease
-
-## Getting Started in 10 Minutes
-
-- Clone this repo
-- Install requirements
-- Run the script
-- Go to http://localhost
-- Done!
+For this to work three models need to be updated to the models folder and also that needs to be configures in the model.py if the names don't match.
 
 Screenshot:
 
 <p align="center">
   <img src="static/screenshot.png" height="420px" alt="">
 </p>
+
+
+## Getting Started
+
+- Clone this repo
+- Install requirements
+- Run the script
+- Go to http://localhost
+- Done!
 
 ## New Features
 
