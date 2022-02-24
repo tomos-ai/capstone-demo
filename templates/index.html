@@ -1,32 +1,65 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="main">
-  <div class="title">
-    <h3>Image Classifier</h3>
-    <!-- <p>
-      <small>A web app demo</small>
-    </p> -->
-  </div>
+    <div class="title">
+        <h3><img src="{{ url_for('static',filename='tomos_ai_logo.png') }}" alt="TOMOS ai Logo" id='logo'> OCT Image Classifier</h3>
+    </div>
 
-  <div class="panel">
-    <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
-    <label for="file-upload" id="file-drag" class="upload-box">
-      <div id="upload-caption">Drop image here or click to select</div>
-      <img id="image-preview" class="hidden" />
-    </label>
-  </div>
-  <div style="margin-bottom: 2rem;">
-    <input type="button" value="Submit" class="button" onclick="submitImage();" />
-    <input type="button" value="Clear" class="button" onclick="clearImage();" />
-  </div>
+    <div id="presentation">
+        <a target="_blank" href="https://docs.google.com/presentation/d/14u62wH3FcRD4vrpJfU1puSTu-d-fEEmnkvYkdn5dPiU/">(Check out our presentation here)</a>
+    </div>
 
-  <div id="image-box">
-    <img id="image-display" />
-    <div id="pred-result" class="hidden"></div>
-    <svg id="loader" class="hidden" viewBox="0 0 32 32" width="32" height="32">
-      <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
-    </svg>
-  </div>
+    <div id="upload_section">
+        <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
+        <label for="file-upload" id="file-drag" class="upload-box">
+            <div id="upload-caption">Drop image here or click to select</div>
+            <img id="image-preview" class="hidden" />
+        </label>
+    </div>
+    <div id="button_main_container">
+        <input type="button" value="Clear" class="button" onclick="clearImage();" />
+    </div>
+
+    <div id="prediction_container">
+        <div class="prediction_block">
+            <div>
+                <input type="button" value="Model / Reduced 5% Dataset / Frozen Layers" class="button prediction_button"
+                    onclick="predictImage('v2_frozen_reduced_5percent_model_resnet50_extended_functional_imgsize256x256_best', 'prediction_model_1');" />
+            </div>
+            <div id='prediction_model_1' class="prediction_model">
+                <div class="prediction_text not_visible"></div>
+                <svg class="loader not_visible" viewBox="0 0 32 32" width="32" height="32">
+                    <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+                </svg>
+                <img class="prediction_img not_visible" />
+            </div>
+        </div>
+        <div class="prediction_block">
+            <div>
+                <input type="button" value="Model / COVID to OCT / Reduced 5% Dataset / Frozen Layers" class="button prediction_button" onclick="predictImage('covid-oct_transfer', 'prediction_model_2');" />
+            </div>
+            <div id='prediction_model_2' class="prediction_model">
+                <div class="prediction_text not_visible"></div>
+                <svg class="loader not_visible" viewBox="0 0 32 32" width="32" height="32">
+                    <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+                </svg>
+                <img class="prediction_img not_visible" />
+            </div>
+        </div>
+        <div class="prediction_block">
+            <div>
+                <input type="button" value="Model / Semi supervised best" class="button prediction_button" onclick="predictImage('semi_sup_best', 'prediction_model_3');" />
+            </div>
+            <div id='prediction_model_3' class="prediction_model">
+                <div class="prediction_text not_visible"></div>
+                <svg class="loader not_visible" viewBox="0 0 32 32" width="32" height="32">
+                    <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+                </svg>
+                <img class="prediction_img not_visible" />
+            </div>
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}
